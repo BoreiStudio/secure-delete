@@ -1,7 +1,7 @@
 # Secure File Deletion Package
 
-[![Latest Version](https://img.shields.io/packagist/v/boreistudio/secure-delete.svg)](https://packagist.org/packages/boreistudio/secure-delete)
-[![License](https://img.shields.io/github/license/BoreiStudio/secure-delete)](LICENSE.md)
+[![Latest Version](https://img.shields.io/packagist/v/boreistudio/secure-delete.svg?style=flat-square)](https://packagist.org/packages/boreistudio/secure-delete)
+[![License](https://img.shields.io/github/license/BoreiStudio/secure-delete)](LICENSE)
 
 A PHP package for secure file and directory deletion implementing multiple government-approved standards.
 
