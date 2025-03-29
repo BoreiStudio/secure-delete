@@ -1,21 +1,57 @@
 <?php
 
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Database Logging Configuration
+    |--------------------------------------------------------------------------
+    | Controls the audit trail functionality for secure deletions.
+    */
     'database' => [
-        'enabled' => true,
-        'store_checksum' => true,  // Guardar hash SHA-256
-        'store_filesize' => true,  // Guardar tamaño de archivo
-        'track_user' => true,      // Registrar usuario automáticamente
+        'enabled' => true,          // Enable/disable database logging
+        'store_checksum' => true,   // Store SHA-256 hash of original file
+        'store_filesize' => true,   // Record original file size in bytes
+        'track_user' => true,       // Automatically log executing user
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | NATO Standard Specific Settings
+    |--------------------------------------------------------------------------
+    | Applies only when using 'nato' deletion method.
+    */
     'nato' => [
-        'verification_sample_size' => 0.1, // 10% del archivo
-        'strict_mode' => true, // Fallar si la verificación no pasa
-        'log_verification' => storage_path('logs/nato_secure_delete.log')
+        'verification_sample_size' => 0.1,  // Percentage of file to verify (0.1 = 10%)
+        'strict_mode' => true,              // Abort if verification fails
+        'log_verification' => storage_path('logs/nato_secure_delete.log') // Verification log path
     ],
-    'max_file_size_checksum' => 500, // Tamaño máximo en MB para calcular checksum
+
+    /*
+    |--------------------------------------------------------------------------
+    | Checksum Calculation Limit
+    |--------------------------------------------------------------------------
+    | Maximum file size (in MB) for checksum generation.
+    | Files larger than this will skip checksum storage.
+    */
+    'max_file_size_checksum' => 500,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Available Standards
+    |--------------------------------------------------------------------------
+    | Enable/disable specific deletion standards.
+    */
     'standards' => [
-        'dod_5220' => true,         // Usar DoD 5220.22-M
-        'gutmann' => false,         // ¿Incluir estándar Gutmann (35 pasos)?
+        'dod_5220' => true,   // US Department of Defense 3-pass
+        'gutmann' => false,    // 35-pass secure deletion (resource intensive)
     ],
-    'default_method' => 'dod_5220', // Método por defecto
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Deletion Method
+    |--------------------------------------------------------------------------
+    | The standard used when no method is specified.
+    | Must be one of the enabled standards above.
+    */
+    'default_method' => 'dod_5220',
 ];

@@ -27,14 +27,14 @@ composer require boreistudio/secure-delete
 ## Documentation
 
 Full documentation available at:  
-[https://support.borei.com.ar/knowledgebase/categories/secure-delete](https://support.borei.com.ar/knowledgebase/categories/secure-delete)
+[https://support.borei.com.ar/hc/categories/1/secure-delete](https://support.borei.com.ar/hc/categories/1/secure-delete)
 
 ## Support 
 
 For implementation help:  
-📧 `support@borei.com.ar`  
-🔗 [https://support.borei.com.ar/contact-us](https://support.borei.com.ar/contact-us)
+🔗 [https://support.borei.com.ar](https://support.borei.com.ar)
 
-## License 
 
-**MIT** © [BoreiStudio](https://github.com/BoreiStudio)
+## Licensing
+- Open-source version: [MIT](LICENSE) (requires attribution)
+- PRO version: [See EULA](PRO_EULA.md) (commercial use)
