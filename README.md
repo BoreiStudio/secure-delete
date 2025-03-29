@@ -22,11 +22,12 @@ A PHP package for secure file and directory deletion implementing multiple gover
 
 ```bash
 composer require boreistudio/secure-delete
+````
 
 ## Documentation
 
 Full documentation available at:  
-[https://support.borei.com.ar/secure-delete](https://support.borei.com.ar/secure-delete)
+[https://support.borei.com.ar/knowledgebase/categories/secure-delete](https://support.borei.com.ar/knowledgebase/categories/secure-delete)
 
 ## Support 
 
