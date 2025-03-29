@@ -1,0 +1,134 @@
+📦 Paquete Laravel Secure Delete
+Eliminación segura de archivos y registros según estándares de seguridad (DoD 5220.22-M, Gutmann, Schneier)
+
+License
+
+🔥 Características
+✅ Eliminación segura de:
+
+Archivos (sobrescritura múltiple)
+
+Directorios (recursivo)
+
+Registros de base de datos (Eloquent)
+
+🔐 Métodos soportados:
+
+DoD 5220.22-M (3 pasos)
+
+Gutmann (35 pasos)
+
+Schneier (7 pasos)
+
+Aleatorio (1 paso)
+
+📊 Registro en base de datos de:
+
+Operaciones exitosas/fallidas
+
+Método utilizado
+
+Errores detallados
+
+⚡ Comandos Artisan para gestión
+
+📦 Instalación
+Instalar vía Composer:
+
+bash
+Copy
+composer require boreistudio/secure-delete
+Publicar configuraciones y migraciones:
+
+bash
+Copy
+php artisan secure-delete:install
+Ejecutar migraciones:
+
+bash
+Copy
+php artisan migrate
+🚀 Uso Básico
+Eliminar archivos:
+php
+Copy
+use Boreistudio\SecureDelete\SecureDelete;
+
+// Por defecto (DoD 5220.22-M)
+SecureDelete::wipe('/ruta/archivo.txt');
+
+// Especificar método
+SecureDelete::wipe('/ruta/archivo.conf', 'gutmann');
+Eliminar modelos Eloquent:
+php
+Copy
+$user = User::find(1);
+SecureDelete::wipe($user); // Sobrescribe datos antes de borrar
+Eliminar directorios:
+php
+Copy
+use Boreistudio\SecureDelete\FileShredder;
+
+FileShredder::wipeDirectory('/ruta/carpeta');
+⚙ Configuración (config/secure-delete.php)
+php
+Copy
+return [
+    'default_method' => 'dod_5220',
+    'database' => [
+        'enabled' => true,
+        'table_name' => 'secure_deletions',
+    ],
+    'verify_overwrite' => false, // Verificar sobrescritura (puede ser lento)
+];
+📜 Registros en Base de Datos
+Ver todos los registros desde Tinker:
+
+php
+Copy
+use Boreistudio\SecureDelete\Models\SecureDeletion;
+
+// Últimas 10 operaciones
+SecureDeletion::latest()->take(10)->get();
+
+// Solo fallos
+SecureDeletion::whereNotNull('error')->get();
+Estructura de la tabla:
+
+php
+Copy
+Schema::create('secure_deletions', function (Blueprint $table) {
+    $table->id();
+    $table->string('deletable_type'); // file, directory, model
+    $table->string('deletable_path'); // Ruta o clase del modelo
+    $table->string('method');         // dod_5220, gutmann, etc.
+    $table->text('error')->nullable();
+    $table->timestamps();
+});
+🛠 Comandos Artisan
+Publicar configuración:
+
+bash
+Copy
+php artisan vendor:publish --tag=secure-delete-config
+Eliminar todos los archivos .tmp en storage:
+
+bash
+Copy
+php artisan secure-delete:clean tmp --method=schneier
+🧪 Pruebas
+Ejecutar suite de pruebas:
+
+bash
+Copy
+composer test
+📌 Requisitos
+PHP 8.0+
+
+Laravel 9.x|10.x
+
+📄 Licencia
+MIT - Ver LICENSE para más detalles.
+
+¿Problemas o sugerencias?
+¡Abre un issue en GitHub! ✨

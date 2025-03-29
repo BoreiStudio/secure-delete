@@ -1,0 +1,28 @@
+{
+    "name": "boreistudio/secure-delete",
+    "description": "Securely deletes files and directories by implementing the DoD 5220.22-M standard",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Boreistudio\\SecureDelete\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Borei Studio"
+        }
+    ],
+    "require": {
+            "php": ">=8.2",
+            "illuminate/support": "^12.0"
+        },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Boreistudio\\SecureDelete\\SecureDeleteServiceProvider"
+            ],
+            "aliases": []
+        }
+    }
+}
