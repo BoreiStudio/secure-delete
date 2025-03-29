@@ -33,7 +33,7 @@ Full documentation available at:
 
 For implementation help:  
 📧 `support@borei.com.ar`  
-🔗 [https://support.borei.com.ar](https://support.borei.com.ar)
+🔗 [https://support.borei.com.ar/contact-us](https://support.borei.com.ar/contact-us)
 
 ## License 
 
